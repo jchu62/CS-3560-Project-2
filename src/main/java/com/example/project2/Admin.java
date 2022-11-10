@@ -1,23 +1,21 @@
 package com.example.project2;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.JTextArea;
-import javax.swing.JTree;
-import javax.swing.JButton;
+import javax.swing.*;
 
-public class Admin{
+public class Admin extends JFrame{
 
-    private JPanel mainPane;
-    private static Admin instance = Admin.getInstance();
+    private JPanel treePanel;
     private JTree tree;
-    private Admin(){}
+    private JPanel mainPanel;
+    private JTextField textField;
+    private JButton addUserButton;
+    private JButton addGroupButton;
+    private JButton openUserButton;
+    private JButton userTotalButton;
+    private JButton groupTotalButton;
+    private JButton userTotalMessageButton;
+    private JButton positiveMessagePercentButton;
+    private static Admin instance = Admin.getInstance();
 
     public static Admin getInstance() {
         if (instance == null)
@@ -25,5 +23,21 @@ public class Admin{
             instance = new Admin();
         }
         return instance;
+    }
+    private Admin()
+    {
+        treePanel = new JPanel();
+        tree = new JTree();
+        mainPanel = new JPanel();
+        textField = new JTextField();
+        addUserButton = new JButton();
+        addGroupButton = new JButton();
+        openUserButton = new JButton();
+        userTotalButton = new JButton();
+        groupTotalButton = new JButton();
+        userTotalMessageButton = new JButton();
+        positiveMessagePercentButton = new JButton();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }

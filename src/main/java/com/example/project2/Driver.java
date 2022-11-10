@@ -2,5 +2,8 @@ package com.example.project2;
 
 public class Driver
 {
-    Admin panel = Admin.getInstance();
+    public static void main(String args[])
+    {
+        Admin panel = Admin.getInstance();
+    }
 }
