@@ -1,50 +1,22 @@
 package com.example.project2;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.JTextArea;
+import javax.swing.JTree;
+import javax.swing.JButton;
 
-public class DriverController {
-    @FXML
-    private Label labelText;
-    private TextField textField;
+public class DriverController
+{
+    private JPanel mainPane;
+    private static Admin instance = Admin.getInstance();
+    private JTree tree;
 
-    @FXML
-    protected void onAddUser() {
-        if(textField.contains(""))
-        {
 
-        }
-        labelText.setText("Please set a valid name in the text box");
-    }
-    @FXML
-    protected void onAddGroup()
-    {
-
-    }
-    @FXML
-    protected void onOpenUserView()
-    {
-
-    }
-    @FXML
-    protected void onShowUserTotal()
-    {
-        labelText.setText("Show user total");
-    }
-    @FXML
-    protected void onShowGroupTotal()
-    {
-        labelText.setText("Show group total");
-    }
-    @FXML
-    protected void onShowMessageTotal()
-    {
-        labelText.setText("Show message total");
-    }
-    @FXML
-    protected void onShowPositivePercentage()
-    {
-        labelText.setText("Show positive percentage");
-    }
 }
