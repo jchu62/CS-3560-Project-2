@@ -1,6 +1,7 @@
 package com.example.project2;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class Admin extends JFrame{
 
@@ -17,6 +18,7 @@ public class Admin extends JFrame{
     private JButton positiveMessagePercentButton;
     private static Admin instance = Admin.getInstance();
 
+    // singleton
     public static Admin getInstance() {
         if (instance == null)
         {
@@ -26,6 +28,7 @@ public class Admin extends JFrame{
     }
     private Admin()
     {
+        this.setTitle("Admin View");
         treePanel = new JPanel();
         tree = new JTree();
         mainPanel = new JPanel();
@@ -38,6 +41,9 @@ public class Admin extends JFrame{
         userTotalMessageButton = new JButton();
         positiveMessagePercentButton = new JButton();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 640, 480);
 
+        mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        mainPanel.setLayout(null);
     }
 }
