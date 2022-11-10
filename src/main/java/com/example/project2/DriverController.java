@@ -9,7 +9,8 @@ public class DriverController {
 
     @FXML
     protected void onAddUser() {
-//        labelText.setText("Adds user");
+//        if ()
+        labelText.setText("Please set a valid name in the text box");
     }
     @FXML
     protected void onAddGroup()
