@@ -3,7 +3,7 @@ package com.example.project2;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public class User implements UserElement{
     private UUID uuid;
     private String name;
     private List<Observer> userFollowers;
@@ -25,9 +25,18 @@ public class User {
         for (Observer observer : userFollowing)
             observer.update();
     }
+    public List<String> getMessageList()
+    {
+        return messageList;
+    }
     public void sendMessage(String message)
     {
         messageList.add(message);
         notifyObservers();
+    }
+    @Override
+    public void accept(UserVisitor userVisitor)
+    {
+        userVisitor.visit(this);
     }
 }
