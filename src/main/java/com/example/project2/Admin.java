@@ -6,8 +6,12 @@ public class Admin
 
     private Admin(){}
 
-    public static Admin getInstance()
-    {
+    // lazy initialization
+    public static Admin getInstance() {
+        if (instance == null)
+        {
+            instance = new Admin();
+        }
         return instance;
     }
 
