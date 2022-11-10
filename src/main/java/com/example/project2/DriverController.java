@@ -2,14 +2,19 @@ package com.example.project2;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class DriverController {
     @FXML
     private Label labelText;
+    private TextField textField;
 
     @FXML
     protected void onAddUser() {
-//        if ()
+        if(textField.contains(""))
+        {
+
+        }
         labelText.setText("Please set a valid name in the text box");
     }
     @FXML

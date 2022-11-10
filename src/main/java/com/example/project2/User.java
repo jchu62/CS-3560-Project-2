@@ -17,6 +17,8 @@ public class User implements UserElement{
         this.name = name;
         userFollowers = new ArrayList<User>();
         userFollowing = new ArrayList<User>();
+        userFollowers.add(this);
+        userFollowing.add(this);
     }
 
     public void addFollower(User user)
@@ -24,6 +26,10 @@ public class User implements UserElement{
         userFollowing.add(user);
     }
     public void addFollowing(User user)
+    {
+        userFollowers.add(user);
+    }
+    public void followUser(UUID uuid)
     {
 
     }
@@ -45,5 +51,10 @@ public class User implements UserElement{
     public void accept(UserVisitor userVisitor)
     {
         userVisitor.visit(this);
+    }
+    @Override
+    public String toString()
+    {
+        return this.uuid.toString();
     }
 }
