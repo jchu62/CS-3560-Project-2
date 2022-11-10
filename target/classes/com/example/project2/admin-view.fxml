@@ -3,8 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.TreeItem?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+
 <VBox alignment="CENTER_RIGHT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.project2.DriverController">
     <padding>
@@ -14,9 +17,12 @@
     <!--    <Label fx:id="welcomeText"/>-->
     <Button text="Add User" onAction="#onAddUser"/>
     <Button text="Add Group" onAction="#onAddGroup"/>
+    <Button text="Open User View"/>
     <Button text="Show User Total"/>
     <Button text="Show Group Total"/>
     <Button text="Show Messages Total"/>
     <Button text="Show Positive Percentage"/>
+    <TextField></TextField>
+    <TreeView></TreeView>
 
 </VBox>

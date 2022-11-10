@@ -16,4 +16,9 @@ public class DriverController {
     {
 
     }
+    @FXML
+    protected void onOpenUserView()
+    {
+
+    }
 }
