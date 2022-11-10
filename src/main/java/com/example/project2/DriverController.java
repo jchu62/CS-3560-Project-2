@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class DriverController {
-//    @FXML
-//    private Label welcomeText;
+    @FXML
+    private Label labelText;
 
     @FXML
     protected void onAddUser() {
-//        welcomeText.setText("Adds user");
+//        labelText.setText("Adds user");
     }
     @FXML
     protected void onAddGroup()
@@ -20,5 +20,25 @@ public class DriverController {
     protected void onOpenUserView()
     {
 
+    }
+    @FXML
+    protected void onShowUserTotal()
+    {
+        labelText.setText("Show user total");
+    }
+    @FXML
+    protected void onShowGroupTotal()
+    {
+        labelText.setText("Show group total");
+    }
+    @FXML
+    protected void onShowMessageTotal()
+    {
+        labelText.setText("Show message total");
+    }
+    @FXML
+    protected void onShowPositivePercentage()
+    {
+        labelText.setText("Show positive percentage");
     }
 }
