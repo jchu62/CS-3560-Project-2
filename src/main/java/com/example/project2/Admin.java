@@ -3,6 +3,8 @@ package com.example.project2;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Admin extends JFrame{
 
@@ -55,6 +57,13 @@ public class Admin extends JFrame{
 
         addUserButton.setBounds(405, 10, 100, 25);
         addUserButton.setText("Add User");
+        addUserButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent a)
+            {
+                System.out.println("Phooey");
+            }
+        });
         mainPanel.add(addUserButton);
 
         addGroupButton.setBounds(515, 10, 100, 25);
