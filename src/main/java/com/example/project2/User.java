@@ -65,7 +65,7 @@ public class User implements UserElement{
     @Override
     public String toString()
     {
-        return this.uuid.toString();
+        return this.name.toString();
     }
 
 

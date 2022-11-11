@@ -3,6 +3,7 @@ package com.example.project2;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.util.UUID;
 
 public class Admin extends JFrame{
@@ -52,6 +53,8 @@ public class Admin extends JFrame{
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(new UserGroup("Root"));
         tree = new JTree(root);
+        tree.setModel(new DefaultTreeModel(root));
+        DefaultTreeModel treeModel = (DefaultTreeModel) tree.getModel();
         tree.setBounds(10, 10, 220, 480);
         mainPanel.add(tree);
 
@@ -65,11 +68,20 @@ public class Admin extends JFrame{
             {
                 DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
                 DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText()));
+                if (selectedNode != null && (!(selectedNode.getUserObject() instanceof User)))
+                {
+                treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+                }
+                else
+                {
+                    textLabel.setText("Please select a valid group.");
+                }
             }
             else
             {
                 textLabel.setText("Please enter a valid name.");
             }
+            textField.setText("");
         });
         mainPanel.add(addUserButton);
 
@@ -80,7 +92,14 @@ public class Admin extends JFrame{
         openUserButton.setBounds(405, 40, 100, 25);
         openUserButton.setText("Open User");
         openUserButton.addActionListener(a -> {
-            UserGUI userGUI = new UserGUI();
+            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+            if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
+                UserGUI userGUI = new UserGUI();
+            }
+            else
+            {
+                textLabel.setText("Please select a valid group.");
+            }
         });
         mainPanel.add(openUserButton);
 
