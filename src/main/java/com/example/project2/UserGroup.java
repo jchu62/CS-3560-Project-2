@@ -5,6 +5,12 @@ public class UserGroup implements UserElement
 {
     private String groupName;
     private List<User> userList;
+    private List<Group> groupList;
+
+    public UserGroup()
+    {
+
+    }
 
     @Override
     public void accept(UserVisitor userVisitor)

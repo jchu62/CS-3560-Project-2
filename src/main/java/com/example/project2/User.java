@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.UUID;
 
 public class User implements UserElement{
-    private UUID uuid;
-    private String name;
-    private List<User> currentFollowers;
-    private List<User> currentlyFollowing;
+    private String userGroup;
+    private final UUID uuid;
+    private final String name;
+    private final List<User> currentFollowers;
+    private final List<User> currentlyFollowing;
     private List<String> messageList;
+    private List<String> messageFeed;
 
     public User(UUID uuid, String name)
     {
@@ -37,10 +39,19 @@ public class User implements UserElement{
     {
         return messageList;
     }
-        public void sendMessage(String message)
+    public void sendMessage(String message)
     {
         messageList.add(message);
         notifyObservers();
+    }
+    public void receiveMessage(String message)
+    {
+        messageFeed.add(message);
+    }
+    public void joinUserGroup(UserGroup userGroup)
+    {
+        userGroup.addGroupMember(this);
+        this.userGroup = userGroup.toString();
     }
     @Override
     public void accept(UserVisitor userVisitor)
@@ -49,6 +60,7 @@ public class User implements UserElement{
     }
         public void notifyObservers()
     {
+
     }
     @Override
     public String toString()
