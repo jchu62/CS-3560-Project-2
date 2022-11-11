@@ -5,7 +5,7 @@ public class UserGroup implements UserElement
 {
     private String groupName;
     private List<User> userList;
-    private List<Group> groupList;
+    private List<UserGroup> groupList;
 
     public UserGroup(String groupName)
     {

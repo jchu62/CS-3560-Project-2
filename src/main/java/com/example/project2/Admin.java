@@ -119,7 +119,8 @@ public class Admin extends JFrame{
         openUserButton.addActionListener(a -> {
             DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
-                UserGUI userGUI = new UserGUI();
+                User selectedUser = (User) selectedNode.getUserObject();
+                UserGUI userGUI = new UserGUI(selectedUser);
             }
             else
             {
@@ -133,21 +134,28 @@ public class Admin extends JFrame{
         getUserUUIDButton.addActionListener(a -> {
             DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
-
+                User selectedUser = (User) selectedNode.getUserObject();
+                System.out.println(selectedUser.getUUID());
             }
             else
             {
-                textLabel.setText("Please select a valid group.");
+                textLabel.setText("Please select a valid user.");
             }
         });
         mainPanel.add(getUserUUIDButton);
 
         userTotalButton.setBounds(305, 200, 150, 25);
         userTotalButton.setText("Amount of Users");
+        userTotalButton.addActionListener(a -> {
+            textLabel.setText("Total Users = " + totalUsers);
+        });
         mainPanel.add(userTotalButton);
 
         groupTotalButton.setBounds(465,200,150,25);
         groupTotalButton.setText("Amount of Groups");
+        groupTotalButton.addActionListener(a -> {
+            textLabel.setText("Total Groups = " + totalGroups);
+        });
         mainPanel.add(groupTotalButton);
 
         userTotalMessageButton.setBounds(305,250, 150,25);

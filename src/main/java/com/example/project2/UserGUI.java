@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class UserGUI extends JFrame
 {
+    private User user;
     private JPanel mainPanel;
     private JButton followUserButton;
     private JButton postMessageButton;
@@ -11,10 +12,12 @@ public class UserGUI extends JFrame
     private JTextField textMessageTextField;
     private JList followerList;
     private JList messageList;
+    private JLabel label;
 
-    public UserGUI()
+    public UserGUI(User user)
     {
-        this.setTitle("User View");
+        this.user = user;
+        this.setTitle("User " + this.user.toString() + " View");
         mainPanel = new JPanel();
         followUserButton = new JButton();
         postMessageButton = new JButton();
@@ -22,6 +25,7 @@ public class UserGUI extends JFrame
         textMessageTextField = new JTextField();
         followerList = new JList();
         messageList = new JList();
+        label = new JLabel();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setContentPane(mainPanel);
@@ -46,6 +50,10 @@ public class UserGUI extends JFrame
         postMessageButton.setBounds(225, 170, 115, 40);
         postMessageButton.setText("Send Message");
         mainPanel.add(postMessageButton);
+
+        label.setBounds(10, 190, 200, 20);
+        label.setText("Welcome " + this.user.toString());
+        mainPanel.add(label);
 
         messageList.setBounds(10, 220, 330, 200);
         mainPanel.add(messageList);

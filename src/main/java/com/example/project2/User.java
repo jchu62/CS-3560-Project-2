@@ -35,6 +35,11 @@ public class User implements UserElement{
         currentFollowers.add(user);
     }
 
+    public UUID getUUID()
+    {
+        return this.uuid;
+    }
+
     public List<String> getMessageList()
     {
         return messageList;
