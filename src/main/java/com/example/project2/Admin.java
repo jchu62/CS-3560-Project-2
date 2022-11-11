@@ -167,8 +167,11 @@ public class Admin extends JFrame{
             for (Enumeration enumeration = treeNode.depthFirstEnumeration(); enumeration.hasMoreElements();)
             {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumeration.nextElement();
+                if (node.getUserObject() instanceof User){
                 User selectedUser = (User)node.getUserObject();
                 selectedUser.accept(visitor);
+            }
+
             }
             textLabel.setText("Total Messages = " + visitor.getTotalMessages());
                 });
@@ -182,8 +185,10 @@ public class Admin extends JFrame{
             for (Enumeration enumeration = treeNode.depthFirstEnumeration(); enumeration.hasMoreElements();)
             {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumeration.nextElement();
-                User selectedUser = (User)node.getUserObject();
-                selectedUser.accept(visitor);
+                if (node.getUserObject() instanceof User) {
+                    User selectedUser = (User) node.getUserObject();
+                    selectedUser.accept(visitor);
+                }
             }
             textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages()/visitor.getTotalMessages() * 100));
         });
