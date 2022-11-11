@@ -79,7 +79,7 @@ public class Admin extends JFrame{
 
         openUserButton.setBounds(405, 40, 100, 25);
         openUserButton.setText("Open User");
-        openUserButton.addActionListener(c -> {
+        openUserButton.addActionListener(a -> {
             UserGUI userGUI = new UserGUI();
         });
         mainPanel.add(openUserButton);

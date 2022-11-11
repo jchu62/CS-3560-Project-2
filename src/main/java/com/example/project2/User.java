@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class User implements UserElement{
-    private String userGroup;
+//    private String userGroup;
     private final UUID uuid;
     private final String name;
     private final List<User> currentFollowers;
@@ -48,11 +48,11 @@ public class User implements UserElement{
     {
         messageFeed.add(message);
     }
-    public void joinUserGroup(UserGroup userGroup)
-    {
-        userGroup.addGroupMember(this);
-        this.userGroup = userGroup.toString();
-    }
+//    public void joinUserGroup(UserGroup userGroup)
+//    {
+//        userGroup.addGroupMember(this);
+//        this.userGroup = userGroup.toString();
+//    }
     @Override
     public void accept(UserVisitor userVisitor)
     {
@@ -67,4 +67,6 @@ public class User implements UserElement{
     {
         return this.uuid.toString();
     }
+
+
 }
