@@ -6,10 +6,14 @@ public class UserVisitorCountMessage implements UserVisitor
     private int totalMessages = 0;
     private String[] positiveStrings = {"sheep", "good", "great", "excellent"};
 
-    public void visit(User user)
+    public UserVisitorCountMessage()
     {
         positiveMessages = 0;
         totalMessages = 0;
+    }
+
+    public void visit(User user)
+    {
         for(String string: user.getMessageList())
         {
             for (int i = 0; i < positiveStrings.length; i++)
@@ -25,14 +29,12 @@ public class UserVisitorCountMessage implements UserVisitor
     }
     public void visit(UserGroup userGroup){}
 
-    public int getPositiveMessages(User user)
+    public int getPositiveMessages()
     {
-        visit(user);
         return positiveMessages;
     }
-    public int getTotalMessages(User user)
+    public int getTotalMessages()
     {
-        visit(user);
         return totalMessages;
     }
 }

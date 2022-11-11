@@ -39,6 +39,9 @@ public class UserGUI extends JFrame
 
         followUserButton.setBounds(225, 10, 115, 40);
         followUserButton.setText("Follow User");
+        followUserButton.addActionListener(a -> {
+            
+                });
         mainPanel.add(followUserButton);
 
         followerList.setBounds(10, 60, 330, 100);

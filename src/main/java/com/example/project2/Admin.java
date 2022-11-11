@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.util.UUID;
+import java.util.Enumeration;
 
 public class Admin extends JFrame{
 
@@ -135,7 +136,7 @@ public class Admin extends JFrame{
             DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
                 User selectedUser = (User) selectedNode.getUserObject();
-                System.out.println(selectedUser.getUUID());
+                System.out.println(selectedUser.getID());
             }
             else
             {
@@ -160,10 +161,32 @@ public class Admin extends JFrame{
 
         userTotalMessageButton.setBounds(305,250, 150,25);
         userTotalMessageButton.setText("Total Messages");
+        userTotalMessageButton.addActionListener(a -> {
+            UserVisitorCountMessage visitor = new UserVisitorCountMessage();
+            DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) tree.getModel().getRoot();
+            for (Enumeration enumeration = treeNode.depthFirstEnumeration(); enumeration.hasMoreElements();)
+            {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumeration.nextElement();
+                User selectedUser = (User)node.getUserObject();
+                selectedUser.accept(visitor);
+            }
+            textLabel.setText("Total Messages = " + visitor.getTotalMessages());
+                });
         mainPanel.add(userTotalMessageButton);
 
         positiveMessagePercentButton.setBounds(465,250,150,25);
         positiveMessagePercentButton.setText("Positive Percentage");
+        positiveMessagePercentButton.addActionListener(a -> {
+            UserVisitorCountMessage visitor = new UserVisitorCountMessage();
+            DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) tree.getModel().getRoot();
+            for (Enumeration enumeration = treeNode.depthFirstEnumeration(); enumeration.hasMoreElements();)
+            {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) enumeration.nextElement();
+                User selectedUser = (User)node.getUserObject();
+                selectedUser.accept(visitor);
+            }
+            textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages()/visitor.getTotalMessages() * 100));
+        });
         mainPanel.add(positiveMessagePercentButton);
 
         textLabel.setBounds(345, 300, 200, 25);

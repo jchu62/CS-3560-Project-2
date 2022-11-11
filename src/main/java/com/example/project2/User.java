@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class User implements UserElement{
-    private final UUID uuid;
+    private final String id;
     private final String name;
     private final List<Observer> currentFollowers;
     private final List<User> currentlyFollowing;
@@ -14,7 +14,7 @@ public class User implements UserElement{
 
     public User(UUID uuid, String name)
     {
-        this.uuid = uuid;
+        this.id = uuid.toString();
         this.name = name;
         currentFollowers = new ArrayList<Observer>();
         currentlyFollowing = new ArrayList<User>();
@@ -42,9 +42,14 @@ public class User implements UserElement{
         }
     }
 
-    public UUID getUUID()
+    public String getID()
     {
-        return this.uuid;
+        return this.id;
+    }
+
+    public boolean verifyID(String uuid)
+    {
+        return uuid==this.id;
     }
 
     public List<String> getMessageList()
@@ -57,6 +62,7 @@ public class User implements UserElement{
         messageList.add(message);
         notifyObservers();
     }
+
     @Override
     public void accept(UserVisitor userVisitor)
     {
