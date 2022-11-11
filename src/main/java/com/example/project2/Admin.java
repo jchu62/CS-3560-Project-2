@@ -20,6 +20,8 @@ public class Admin extends JFrame{
     private JButton userTotalMessageButton;
     private JButton positiveMessagePercentButton;
     private JLabel textLabel;
+    private int totalUsers = 0;
+    private int totalGroups = 1;
     private static Admin instance = Admin.getInstance();
 
     // singleton
@@ -71,10 +73,11 @@ public class Admin extends JFrame{
                 if (selectedNode != null && (!(selectedNode.getUserObject() instanceof User)))
                 {
                 treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+                totalUsers++;
                 }
                 else
                 {
-                    textLabel.setText("Please select a valid group.");
+                    textLabel.setText("Please select a valid user.");
                 }
             }
             else
@@ -87,6 +90,28 @@ public class Admin extends JFrame{
 
         addGroupButton.setBounds(515, 10, 100, 25);
         addGroupButton.setText("Add Group");
+        addGroupButton.addActionListener(a ->
+        {
+            if (!textField.getText().equals(""))
+            {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new UserGroup(textField.getText()));
+                if (selectedNode != null )
+                {
+                    treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+                    totalGroups++;
+                }
+                else
+                {
+                    textLabel.setText("Please select a valid group.");
+                }
+            }
+            else
+            {
+                textLabel.setText("Please enter a valid name.");
+            }
+            textField.setText("");
+        });
         mainPanel.add(addGroupButton);
 
         openUserButton.setBounds(405, 40, 100, 25);
@@ -98,13 +123,23 @@ public class Admin extends JFrame{
             }
             else
             {
-                textLabel.setText("Please select a valid group.");
+                textLabel.setText("Please select a valid user.");
             }
         });
         mainPanel.add(openUserButton);
 
         getUserUUIDButton.setBounds(515, 40, 100, 25);
         getUserUUIDButton.setText("Get User ID");
+        getUserUUIDButton.addActionListener(a -> {
+            DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+            if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
+
+            }
+            else
+            {
+                textLabel.setText("Please select a valid group.");
+            }
+        });
         mainPanel.add(getUserUUIDButton);
 
         userTotalButton.setBounds(305, 200, 150, 25);
