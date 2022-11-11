@@ -39,36 +39,36 @@ public class Admin extends JFrame{
         userTotalMessageButton = new JButton();
         positiveMessagePercentButton = new JButton();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setBounds(360, 120, 640, 480);
-//
-//        mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setSize(640, 480);
+        setContentPane(mainPanel);
+        setBounds(360, 120, 640, 480);
+
+        mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainPanel.setLayout(null);
 
         // will wait on implementing tree
 
-        textField.setBounds(40,40,100,50);
+        textField.setBounds(300,10,150,25);
         mainPanel.add(textField);
 
-        addUserButton.setBounds(500, 50, 200, 200);
+        addUserButton.setBounds(455, 10, 75, 25);
         mainPanel.add(addUserButton);
 
-        addGroupButton.setBounds(500, 60, 200, 200);
+        addGroupButton.setBounds(535, 10, 75, 25);
         mainPanel.add(addGroupButton);
 
-        openUserButton.setBounds(300, 300, 200, 200);
+        openUserButton.setBounds(455, 40, 75, 25);
         mainPanel.add(openUserButton);
 
-        userTotalButton.setBounds(200, 200, 100, 100);
+        userTotalButton.setBounds(455, 200, 75, 25);
         mainPanel.add(userTotalButton);
 
-        groupTotalButton.setBounds(10,10,30,30);
+        groupTotalButton.setBounds(535,200,75,25);
         mainPanel.add(groupTotalButton);
 
-        userTotalMessageButton.setBounds(40,40, 40,40);
+        userTotalMessageButton.setBounds(455,250, 75,25);
         mainPanel.add(userTotalMessageButton);
 
-        positiveMessagePercentButton.setBounds(4,4,4,4);
+        positiveMessagePercentButton.setBounds(535,250,75,25);
         mainPanel.add(positiveMessagePercentButton);
     }
 }
