@@ -52,9 +52,24 @@ public class User implements UserElement{
         return uuid==this.id;
     }
 
-    public List<String> getMessageList()
+    public String[] getMessageList()
     {
-        return messageList;
+        String[] stringArray = new String[messageList.size()];
+        for (int i = 0; i < messageList.size()-1; i++)
+        {
+            stringArray[i] = messageList.get(i);
+        }
+        return stringArray;
+    }
+
+    public String[] getFollowerList()
+    {
+        String [] stringArray = new String[currentlyFollowing.size()];
+        for (int i = 0; i < currentlyFollowing.size()-1; i++)
+        {
+            stringArray[i] = currentlyFollowing.get(i).toString();
+        }
+        return stringArray;
     }
 
     public void sendMessage(String message)

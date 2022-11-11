@@ -40,11 +40,12 @@ public class UserGUI extends JFrame
         followUserButton.setBounds(225, 10, 115, 40);
         followUserButton.setText("Follow User");
         followUserButton.addActionListener(a -> {
-            
+            this.user.follow(user);
                 });
         mainPanel.add(followUserButton);
 
         followerList.setBounds(10, 60, 330, 100);
+        followerList.setListData(this.user.getFollowerList());
         mainPanel.add(followerList);
 
         textMessageTextField.setBounds(10, 170, 200, 20);
@@ -52,6 +53,9 @@ public class UserGUI extends JFrame
 
         postMessageButton.setBounds(225, 170, 115, 40);
         postMessageButton.setText("Send Message");
+        postMessageButton.addActionListener(a -> {
+            this.user.sendMessage(textMessageTextField.getText());
+                });
         mainPanel.add(postMessageButton);
 
         label.setBounds(10, 190, 200, 20);
@@ -59,6 +63,7 @@ public class UserGUI extends JFrame
         mainPanel.add(label);
 
         messageList.setBounds(10, 220, 330, 200);
+        messageList.setListData(this.user.getMessageList());
         mainPanel.add(messageList);
 
     }

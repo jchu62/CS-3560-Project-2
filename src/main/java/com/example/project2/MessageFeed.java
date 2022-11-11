@@ -18,7 +18,7 @@ public class MessageFeed implements Observer
     public void update(String message, User user)
     {
         messageFeed.add(user.toString() + ": " + message);
-        user.notifyObservers();
+//        user.notifyObservers();
     }
 
     public void addObserver(Observer observer)
