@@ -6,7 +6,7 @@ public class UserGUI extends JFrame
 {
     private JPanel mainPanel;
     private JButton followUserButton;
-    private JButton postTweetButton;
+    private JButton postMessageButton;
     private JTextField userIDTextField;
     private JTextField textMessageTextField;
     private JList followerList;
@@ -17,7 +17,7 @@ public class UserGUI extends JFrame
         this.setTitle("User View");
         mainPanel = new JPanel();
         followUserButton = new JButton();
-        postTweetButton = new JButton();
+        postMessageButton = new JButton();
         userIDTextField = new JTextField();
         textMessageTextField = new JTextField();
         followerList = new JList();
@@ -30,7 +30,25 @@ public class UserGUI extends JFrame
         setLayout(null);
         setVisible(true);
 
-        userIDTextField.setBounds(10, 10, 150, 20);
+        userIDTextField.setBounds(10, 10, 200, 20);
         mainPanel.add(userIDTextField);
+
+        followUserButton.setBounds(225, 10, 115, 40);
+        followUserButton.setText("Follow User");
+        mainPanel.add(followUserButton);
+
+        followerList.setBounds(10, 60, 330, 100);
+        mainPanel.add(followerList);
+
+        textMessageTextField.setBounds(10, 170, 200, 20);
+        mainPanel.add(textMessageTextField);
+
+        postMessageButton.setBounds(225, 170, 115, 40);
+        postMessageButton.setText("Send Message");
+        mainPanel.add(postMessageButton);
+
+        messageList.setBounds(10, 220, 330, 200);
+        mainPanel.add(messageList);
+
     }
 }
