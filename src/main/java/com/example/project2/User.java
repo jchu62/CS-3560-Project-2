@@ -7,50 +7,48 @@ import java.util.UUID;
 public class User implements UserElement{
     private UUID uuid;
     private String name;
-    private List<User> userFollowers;
-    private List<User> userFollowing;
+    private List<User> currentFollowers;
+    private List<User> currentlyFollowing;
     private List<String> messageList;
 
     public User(UUID uuid, String name)
     {
         this.uuid = uuid;
         this.name = name;
-        userFollowers = new ArrayList<User>();
-        userFollowing = new ArrayList<User>();
-        userFollowers.add(this);
-        userFollowing.add(this);
+        currentFollowers = new ArrayList<User>();
+        currentlyFollowing = new ArrayList<User>();
+        currentFollowers.add(this);
+        currentlyFollowing.add(this);
     }
 
-    public void addFollower(User user)
-    {
-        userFollowing.add(user);
-    }
     public void addFollowing(User user)
     {
-        userFollowers.add(user);
+        if (!currentlyFollowing.contains(user))
+        {
+            currentlyFollowing.add(user);
+        }
     }
-    public void followUser(UUID uuid)
+    public void addFollower(User user)
     {
-
+        currentFollowers.add(user);
     }
-//    public void notifyObservers()
-//    {
-//        for (Observer observer : userFollowing)
-//            observer.update();
-//    }
+
     public List<String> getMessageList()
     {
         return messageList;
     }
-//    public void sendMessage(String message)
-//    {
-//        messageList.add(message);
-//        notifyObservers();
-//    }
+        public void sendMessage(String message)
+    {
+        messageList.add(message);
+        notifyObservers();
+    }
     @Override
     public void accept(UserVisitor userVisitor)
     {
         userVisitor.visit(this);
+    }
+        public void notifyObservers()
+    {
     }
     @Override
     public String toString()

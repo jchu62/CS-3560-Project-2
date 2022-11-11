@@ -15,4 +15,12 @@ public class UserGroup implements UserElement
     {
         userList.add(user);
     }
+    public List<User> getGroupMembers()
+    {
+        return this.userList;
+    }
+    public String toString()
+    {
+        return this.groupName;
+    }
 }
