@@ -7,9 +7,9 @@ public class UserGroup implements UserElement
     private List<User> userList;
     private List<Group> groupList;
 
-    public UserGroup()
+    public UserGroup(String groupName)
     {
-
+        this.groupName = groupName;
     }
 
     @Override

@@ -2,9 +2,11 @@ package com.example.project2;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.UUID;
 
 public class Admin extends JFrame{
 
@@ -32,7 +34,6 @@ public class Admin extends JFrame{
     private Admin()
     {
         this.setTitle("Admin View");
-        tree = new JTree();
         mainPanel = new JPanel();
         textField = new JTextField();
         addUserButton = new JButton();
@@ -50,7 +51,10 @@ public class Admin extends JFrame{
         mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainPanel.setLayout(null);
 
-        // will wait on implementing tree
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new UserGroup("Root"));
+        tree = new JTree(root);
+        tree.setBounds(10, 10, 220, 480);
+        mainPanel.add(tree);
 
         textField.setBounds(250,10,150,25);
         mainPanel.add(textField);
@@ -61,7 +65,15 @@ public class Admin extends JFrame{
         {
             public void actionPerformed(ActionEvent a)
             {
-                System.out.println("Phooey");
+                if (!textField.getText().equals(""))
+                {
+                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText()));
+                }
+                else
+                {
+                    textLabel.setText("Please enter a valid name.");
+                }
             }
         });
         mainPanel.add(addUserButton);
@@ -90,7 +102,7 @@ public class Admin extends JFrame{
         positiveMessagePercentButton.setText("Positive Percentage");
         mainPanel.add(positiveMessagePercentButton);
 
-        textLabel.setBounds(445, 300, 50, 25);
+        textLabel.setBounds(345, 300, 200, 25);
         textLabel.setText("Test");
         mainPanel.add(textLabel);
     }
