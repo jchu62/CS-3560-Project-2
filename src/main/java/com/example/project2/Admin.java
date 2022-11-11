@@ -2,6 +2,7 @@ package com.example.project2;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class Admin extends JFrame{
 
@@ -15,6 +16,7 @@ public class Admin extends JFrame{
     private JButton groupTotalButton;
     private JButton userTotalMessageButton;
     private JButton positiveMessagePercentButton;
+    private JLabel textLabel;
     private static Admin instance = Admin.getInstance();
 
     // singleton
@@ -38,6 +40,7 @@ public class Admin extends JFrame{
         groupTotalButton = new JButton();
         userTotalMessageButton = new JButton();
         positiveMessagePercentButton = new JButton();
+        textLabel = new JLabel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         setBounds(360, 120, 640, 480);
@@ -47,28 +50,39 @@ public class Admin extends JFrame{
 
         // will wait on implementing tree
 
-        textField.setBounds(300,10,150,25);
+        textField.setBounds(250,10,150,25);
         mainPanel.add(textField);
 
-        addUserButton.setBounds(455, 10, 75, 25);
+        addUserButton.setBounds(405, 10, 100, 25);
+        addUserButton.setText("Add User");
         mainPanel.add(addUserButton);
 
-        addGroupButton.setBounds(535, 10, 75, 25);
+        addGroupButton.setBounds(515, 10, 100, 25);
+        addGroupButton.setText("Add Group");
         mainPanel.add(addGroupButton);
 
-        openUserButton.setBounds(455, 40, 75, 25);
+        openUserButton.setBounds(405, 40, 100, 25);
+        openUserButton.setText("Open User");
         mainPanel.add(openUserButton);
 
-        userTotalButton.setBounds(455, 200, 75, 25);
+        userTotalButton.setBounds(305, 200, 150, 25);
+        userTotalButton.setText("Amount of Users");
         mainPanel.add(userTotalButton);
 
-        groupTotalButton.setBounds(535,200,75,25);
+        groupTotalButton.setBounds(465,200,150,25);
+        groupTotalButton.setText("Amount of Groups");
         mainPanel.add(groupTotalButton);
 
-        userTotalMessageButton.setBounds(455,250, 75,25);
+        userTotalMessageButton.setBounds(305,250, 150,25);
+        userTotalMessageButton.setText("Total Messages");
         mainPanel.add(userTotalMessageButton);
 
-        positiveMessagePercentButton.setBounds(535,250,75,25);
+        positiveMessagePercentButton.setBounds(465,250,150,25);
+        positiveMessagePercentButton.setText("Positive Percentage");
         mainPanel.add(positiveMessagePercentButton);
+
+        textLabel.setBounds(445, 300, 50, 25);
+        textLabel.setText("Test");
+        mainPanel.add(textLabel);
     }
 }
