@@ -3,9 +3,6 @@ package com.example.project2;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.UUID;
 
 public class Admin extends JFrame{
@@ -61,19 +58,15 @@ public class Admin extends JFrame{
 
         addUserButton.setBounds(405, 10, 100, 25);
         addUserButton.setText("Add User");
-        addUserButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent a)
+        addUserButton.addActionListener(a -> {
+            if (!textField.getText().equals(""))
             {
-                if (!textField.getText().equals(""))
-                {
-                    DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-                    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText()));
-                }
-                else
-                {
-                    textLabel.setText("Please enter a valid name.");
-                }
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText()));
+            }
+            else
+            {
+                textLabel.setText("Please enter a valid name.");
             }
         });
         mainPanel.add(addUserButton);
@@ -84,6 +77,9 @@ public class Admin extends JFrame{
 
         openUserButton.setBounds(405, 40, 100, 25);
         openUserButton.setText("Open User");
+        openUserButton.addActionListener(c -> {
+            UserGUI userGUI = new UserGUI();
+        });
         mainPanel.add(openUserButton);
 
         userTotalButton.setBounds(305, 200, 150, 25);
