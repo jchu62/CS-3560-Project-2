@@ -16,9 +16,9 @@ public class User implements UserElement{
     {
         this.id = uuid.toString();
         this.name = name;
-        currentFollowers = new ArrayList<Observer>();
-        currentlyFollowing = new ArrayList<User>();
-        messageList = new ArrayList<String>();
+        currentFollowers = new ArrayList<>();
+        currentlyFollowing = new ArrayList<>();
+        messageList = new ArrayList<>();
         messageFeed = new MessageFeed();
         this.addObserver(messageFeed);
         currentlyFollowing.add(this);
@@ -55,7 +55,7 @@ public class User implements UserElement{
     public String[] getMessageList()
     {
         String[] stringArray = new String[messageList.size()];
-        for (int i = 0; i < messageList.size()-1; i++)
+        for (int i = 0; i < messageList.size(); i++)
         {
             stringArray[i] = messageList.get(i);
         }
@@ -65,7 +65,7 @@ public class User implements UserElement{
     public String[] getFollowerList()
     {
         String [] stringArray = new String[currentlyFollowing.size()];
-        for (int i = 0; i < currentlyFollowing.size()-1; i++)
+        for (int i = 0; i < currentlyFollowing.size(); i++)
         {
             stringArray[i] = currentlyFollowing.get(i).toString();
         }
@@ -96,6 +96,4 @@ public class User implements UserElement{
     {
         return this.name;
     }
-
-
 }

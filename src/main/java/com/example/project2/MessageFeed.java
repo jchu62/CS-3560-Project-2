@@ -10,8 +10,8 @@ public class MessageFeed implements Observer
 
     public MessageFeed()
     {
-        messageFeed = new ArrayList<String>();
-        followers = new ArrayList<Observer>();
+        messageFeed = new ArrayList<>();
+        followers = new ArrayList<>();
     }
 
     @Override
