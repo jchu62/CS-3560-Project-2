@@ -109,4 +109,9 @@ public class User implements UserElement{
         }
         return array;
     }
+
+    public MessageFeed getMessageFeedClass()
+    {
+        return messageFeed;
+    }
 }

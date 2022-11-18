@@ -8,7 +8,6 @@ public class MessageFeed implements Observer
 {
     private List<String> messageFeed;
     private DefaultListModel messageFeedList;
-//    private List<Observer> followers;
 
     public MessageFeed()
     {
@@ -20,18 +19,10 @@ public class MessageFeed implements Observer
     @Override
     public void update(String message, User user)
     {
-        messageFeed.add(user.toString() + ": " + message);
-        messageFeedList.insertElementAt(message, 0);
-//        user.notifyObservers();
+        String newMessage = user.toString() + ": " + message;
+        messageFeed.add(newMessage);
+        messageFeedList.insertElementAt(newMessage, 0);
     }
-
-//    public void addObserver(Observer observer)
-//    {
-//        if (!followers.contains(observer))
-//        {
-//            followers.add(observer);
-//        }
-//    }
 
     public int getMessageAmount()
     {

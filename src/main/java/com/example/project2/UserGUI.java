@@ -73,7 +73,7 @@ public class UserGUI extends JFrame
         mainPanel.add(label);
 
         messageList.setBounds(10, 220, 330, 200);
-        messageList.setListData(this.user.getMessageFeed());
+        messageList.setModel(this.user.getMessageFeedClass().getMessageFeedList());
         mainPanel.add(messageList);
 
     }
