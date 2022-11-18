@@ -41,6 +41,7 @@ public class UserGUI extends JFrame
         followUserButton.setText("Follow User");
         followUserButton.addActionListener(a -> {
             this.user.follow(user);
+            followerList.setListData(this.user.getFollowerList());
             userIDTextField.setText("");
                 });
         mainPanel.add(followUserButton);
@@ -56,6 +57,7 @@ public class UserGUI extends JFrame
         postMessageButton.setText("Send Message");
         postMessageButton.addActionListener(a -> {
             this.user.sendMessage(textMessageTextField.getText());
+            messageList.setListData(this.user.getMessageList());
             textMessageTextField.setText("");
                 });
         mainPanel.add(postMessageButton);
@@ -66,7 +68,6 @@ public class UserGUI extends JFrame
 
         messageList.setBounds(10, 220, 330, 200);
         messageList.setListData(this.user.getMessageList());
-
         mainPanel.add(messageList);
 
     }
