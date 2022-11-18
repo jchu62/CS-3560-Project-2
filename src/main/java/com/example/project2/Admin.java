@@ -194,7 +194,7 @@ public class Admin extends JFrame{
                     selectedUser.accept(visitor);
                 }
             }
-            textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages()/visitor.getTotalMessages() * 1.0));
+            textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages() * 100.0/visitor.getTotalMessages()));
         });
         mainPanel.add(positiveMessagePercentButton);
 
