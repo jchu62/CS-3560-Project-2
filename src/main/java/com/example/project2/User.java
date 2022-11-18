@@ -26,11 +26,14 @@ public class User implements UserElement{
 
     public void follow(User user)
     {
-        user.addObserver(messageFeed);
-        currentlyFollowing.add(user);
-        for (String string : user.getMessageList())
+        if (!currentlyFollowing.contains(user))
         {
-            messageFeed.update(string, user);
+            user.addObserver(messageFeed);
+            currentlyFollowing.add(user);
+            for (String string : user.getMessageList())
+            {
+                messageFeed.update(string, user);
+            }
         }
     }
 
@@ -49,7 +52,7 @@ public class User implements UserElement{
 
     public boolean verifyID(String uuid)
     {
-        return uuid==this.id;
+        return uuid.equals(this.id);
     }
 
     public String[] getMessageList()

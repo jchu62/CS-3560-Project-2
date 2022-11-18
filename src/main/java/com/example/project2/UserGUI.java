@@ -40,7 +40,13 @@ public class UserGUI extends JFrame
         followUserButton.setBounds(225, 10, 115, 40);
         followUserButton.setText("Follow User");
         followUserButton.addActionListener(a -> {
-            this.user.follow(user);
+            for(User otherUsers : Admin.getInstance().getUserList())
+            {
+                if (otherUsers.verifyID(userIDTextField.getText()))
+                {
+                    this.user.follow(otherUsers);
+                }
+            }
             followerList.setListData(this.user.getFollowerList());
             userIDTextField.setText("");
                 });

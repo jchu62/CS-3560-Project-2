@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.Enumeration;
 
@@ -23,6 +25,7 @@ public class Admin extends JFrame{
     private JLabel textLabel;
     private int totalUsers = 0;
     private int totalGroups = 1;
+    private List<User> userList = new ArrayList<>();
     private static Admin instance = Admin.getInstance();
 
     // singleton
@@ -74,6 +77,7 @@ public class Admin extends JFrame{
                 if (selectedNode != null && (!(selectedNode.getUserObject() instanceof User)))
                 {
                 treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+                userList.add((User) newNode.getUserObject());
                 totalUsers++;
                 }
                 else
@@ -190,12 +194,17 @@ public class Admin extends JFrame{
                     selectedUser.accept(visitor);
                 }
             }
-            textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages()/visitor.getTotalMessages() * 100));
+            textLabel.setText("Positive Message % = " + (visitor.getPositiveMessages()/visitor.getTotalMessages() * 1.0));
         });
         mainPanel.add(positiveMessagePercentButton);
 
         textLabel.setBounds(345, 300, 200, 25);
         textLabel.setText("Test");
         mainPanel.add(textLabel);
+    }
+
+    public List<User> getUserList()
+    {
+        return userList;
     }
 }
