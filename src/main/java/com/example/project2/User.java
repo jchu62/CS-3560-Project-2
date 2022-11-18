@@ -99,4 +99,14 @@ public class User implements UserElement{
     {
         return this.name;
     }
+
+    public String[] getMessageFeed()
+    {
+        String[] array = new String[messageFeed.getMessageAmount()];
+        for (int i = 0; i < this.messageFeed.getMessageAmount(); i++)
+        {
+            array[i] = messageFeed.getMessage(i);
+        }
+        return array;
+    }
 }

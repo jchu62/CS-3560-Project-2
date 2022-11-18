@@ -21,11 +21,21 @@ public class MessageFeed implements Observer
 //        user.notifyObservers();
     }
 
-    public void addObserver(Observer observer)
+//    public void addObserver(Observer observer)
+//    {
+//        if (!followers.contains(observer))
+//        {
+//            followers.add(observer);
+//        }
+//    }
+
+    public int getMessageAmount()
     {
-        if (!followers.contains(observer))
-        {
-            followers.add(observer);
-        }
+        return messageFeed.size();
+    }
+
+    public String getMessage(int element)
+    {
+        return messageFeed.get(element);
     }
 }
