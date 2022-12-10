@@ -18,6 +18,7 @@ public class Admin extends JFrame{
     private JButton addGroupButton;
     private JButton openUserButton;
     private JButton getUserUUIDButton;
+    private JButton verifyUUIDButton;
     private JButton userTotalButton;
     private JButton groupTotalButton;
     private JButton userTotalMessageButton;
@@ -45,6 +46,7 @@ public class Admin extends JFrame{
         addGroupButton = new JButton();
         openUserButton = new JButton();
         getUserUUIDButton = new JButton();
+        verifyUUIDButton = new JButton();
         userTotalButton = new JButton();
         groupTotalButton = new JButton();
         userTotalMessageButton = new JButton();
@@ -148,6 +150,10 @@ public class Admin extends JFrame{
             }
         });
         mainPanel.add(getUserUUIDButton);
+
+        verifyUUIDButton.setBounds(405, 70, 100, 25);
+        verifyUUIDButton.setText("Verify ID");
+        mainPanel.add(verifyUUIDButton);
 
         userTotalButton.setBounds(305, 200, 150, 25);
         userTotalButton.setText("Amount of Users");
