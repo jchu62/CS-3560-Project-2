@@ -59,7 +59,7 @@ public class Admin extends JFrame{
         mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainPanel.setLayout(null);
 
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new UserGroup("Root"));
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new UserGroup("Root", System.currentTimeMillis()));
         tree = new JTree(root);
         tree.setModel(new DefaultTreeModel(root));
         DefaultTreeModel treeModel = (DefaultTreeModel) tree.getModel();
@@ -75,7 +75,7 @@ public class Admin extends JFrame{
             if (!textField.getText().equals(""))
             {
                 DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText()));
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new User(UUID.randomUUID(), textField.getText(), System.currentTimeMillis()));
                 if (selectedNode != null && (!(selectedNode.getUserObject() instanceof User)))
                 {
                 treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
@@ -102,7 +102,7 @@ public class Admin extends JFrame{
             if (!textField.getText().equals(""))
             {
                 DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new UserGroup(textField.getText()));
+                DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(new UserGroup(textField.getText(), System.currentTimeMillis()));
                 if (selectedNode != null )
                 {
                     treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
@@ -153,6 +153,9 @@ public class Admin extends JFrame{
 
         verifyUUIDButton.setBounds(405, 70, 100, 25);
         verifyUUIDButton.setText("Verify ID");
+        verifyUUIDButton.addActionListener(a -> {
+
+                });
         mainPanel.add(verifyUUIDButton);
 
         userTotalButton.setBounds(305, 200, 150, 25);

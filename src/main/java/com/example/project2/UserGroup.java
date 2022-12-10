@@ -7,9 +7,12 @@ public class UserGroup implements UserElement
     private List<User> userList;
     private List<UserGroup> groupList;
 
-    public UserGroup(String groupName)
+    private long creationTime;
+
+    public UserGroup(String groupName, long creationTime)
     {
         this.groupName = groupName;
+        this.creationTime = creationTime;
     }
 
     @Override

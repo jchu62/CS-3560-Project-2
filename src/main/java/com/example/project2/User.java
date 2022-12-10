@@ -11,11 +11,15 @@ public class User implements UserElement{
     private final List<User> currentlyFollowing;
     private List<String> messageList;
     private MessageFeed messageFeed;
+    private long creationTime;
+    private long lastUpdateTime;
 
-    public User(UUID uuid, String name)
+    public User(UUID uuid, String name, long creationTime)
     {
         this.id = uuid.toString();
         this.name = name;
+        this.creationTime = creationTime;
+        this.lastUpdateTime = creationTime;
         currentFollowers = new ArrayList<>();
         currentlyFollowing = new ArrayList<>();
         messageList = new ArrayList<>();
@@ -113,5 +117,20 @@ public class User implements UserElement{
     public MessageFeed getMessageFeedClass()
     {
         return messageFeed;
+    }
+
+    public long getCreationTime()
+    {
+        return creationTime;
+    }
+
+    public long getLastUpdateTime()
+    {
+        return lastUpdateTime;
+    }
+
+    private void setLastUpdateTime(long updateTime)
+    {
+        lastUpdateTime = updateTime;
     }
 }
