@@ -63,7 +63,7 @@ public class UserGUI extends JFrame
         postMessageButton.setText("Send Message");
         postMessageButton.addActionListener(a -> {
             this.user.sendMessage(textMessageTextField.getText());
-            messageList.setListData(this.user.getMessageFeed());
+//            messageList.setListData(this.user.getMessageFeed());
             textMessageTextField.setText("");
                 });
         mainPanel.add(postMessageButton);

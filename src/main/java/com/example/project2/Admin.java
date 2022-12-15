@@ -163,8 +163,6 @@ public class Admin extends JFrame{
         verifyUUIDButton.addActionListener(a -> {
             boolean userVerified = verifyUserList(userList);
             boolean groupVerified = verifyGroupList(userGroupList);
-            System.out.println(userVerified);
-            System.out.println(groupVerified);
             if (userVerified && groupVerified)
             {
                 textLabel.setText("Verified!");
@@ -180,8 +178,26 @@ public class Admin extends JFrame{
         getLastUpdatedUser.setText("Get Last Updated User");
         getLastUpdatedUser.addActionListener(a ->
         {
-            boolean userVerified = verifyUserList(userList);
-
+            boolean isNotEmpty = true;
+            if (userList.size() == 0)
+            {
+                textLabel.setText("No users available!");
+                isNotEmpty = false;
+            }
+            if (isNotEmpty)
+            {
+                long updatedTime = userList.get(0).getLastUpdateTime();
+                User lastUpdatedUser = userList.get(0);
+                for (int i = 1; i < userList.size(); i++)
+                {
+                    if (updatedTime < userList.get(i).getLastUpdateTime())
+                    {
+                        updatedTime = userList.get(i).getLastUpdateTime();
+                        lastUpdatedUser = userList.get(i);
+                    }
+                }
+                textLabel.setText(lastUpdatedUser.toString() + " is the last updated user.");
+            }
         });
         mainPanel.add(getLastUpdatedUser);
 
@@ -235,7 +251,7 @@ public class Admin extends JFrame{
         mainPanel.add(positiveMessagePercentButton);
 
         textLabel.setBounds(345, 300, 200, 25);
-        textLabel.setText("Test");
+        textLabel.setText("Welcome to the Admin View");
         mainPanel.add(textLabel);
     }
 
@@ -265,7 +281,7 @@ public class Admin extends JFrame{
             {
                 if (j != i)
                 {
-                    if (checker.equals(arrayList.get(i).getID()))
+                    if (checker.equals(arrayList.get(j).getID()))
                     {
                         isVerified = false;
                     }
@@ -295,7 +311,7 @@ public class Admin extends JFrame{
             {
                 if (j != i)
                 {
-                    if (checker.equals(arrayList.get(i).getGroupName()))
+                    if (checker.equals(arrayList.get(j).getGroupName()))
                     {
                         isVerified = false;
                     }
