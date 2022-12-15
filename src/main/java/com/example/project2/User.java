@@ -129,7 +129,7 @@ public class User implements UserElement{
         return lastUpdateTime;
     }
 
-    private void setLastUpdateTime(long updateTime)
+    public void setLastUpdateTime(long updateTime)
     {
         lastUpdateTime = updateTime;
     }

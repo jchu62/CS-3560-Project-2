@@ -20,6 +20,7 @@ public class MessageFeed implements Observer
     public void update(String message, User user)
     {
         String newMessage = user.toString() + ": " + message;
+        user.setLastUpdateTime(System.currentTimeMillis());
         messageFeed.add(newMessage);
         messageFeedList.insertElementAt(newMessage, 0);
     }

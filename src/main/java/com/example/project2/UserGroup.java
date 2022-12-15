@@ -32,4 +32,12 @@ public class UserGroup implements UserElement
     {
         return this.groupName;
     }
+    public long getCreationTime()
+    {
+        return this.creationTime;
+    }
+    public String getGroupName()
+    {
+        return this.groupName;
+    }
 }

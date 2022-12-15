@@ -28,6 +28,7 @@ public class Admin extends JFrame{
     private int totalUsers = 0;
     private int totalGroups = 1;
     private List<User> userList = new ArrayList<>();
+    private List<UserGroup> userGroupList = new ArrayList<>();
     private static Admin instance = Admin.getInstance();
 
     // singleton
@@ -61,7 +62,8 @@ public class Admin extends JFrame{
         mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         mainPanel.setLayout(null);
 
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode(new UserGroup("Root", System.currentTimeMillis()));
+        userGroupList.add(new UserGroup ("Root", System.currentTimeMillis()));
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(userGroupList.get(0));
         tree = new JTree(root);
         tree.setModel(new DefaultTreeModel(root));
         DefaultTreeModel treeModel = (DefaultTreeModel) tree.getModel();
@@ -108,6 +110,7 @@ public class Admin extends JFrame{
                 if (selectedNode != null )
                 {
                     treeModel.insertNodeInto(newNode, selectedNode, selectedNode.getChildCount());
+                    userGroupList.add((UserGroup) newNode.getUserObject());
                     totalGroups++;
                 }
                 else
@@ -131,6 +134,7 @@ public class Admin extends JFrame{
                 User selectedUser = (User) selectedNode.getUserObject();
                 new UserGUI(selectedUser);
                 textLabel.setText(("Time created is " + selectedUser.getCreationTime()));
+                System.out.println("Time updated is " + selectedUser.getLastUpdateTime());
             }
             else
             {
@@ -157,14 +161,26 @@ public class Admin extends JFrame{
         verifyUUIDButton.setBounds(405, 70, 100, 25);
         verifyUUIDButton.setText("Verify ID");
         verifyUUIDButton.addActionListener(a -> {
-
-                });
+            boolean userVerified = verifyUserList(userList);
+            boolean groupVerified = verifyGroupList(userGroupList);
+            System.out.println(userVerified);
+            System.out.println(groupVerified);
+            if (userVerified && groupVerified)
+            {
+                textLabel.setText("Verified!");
+            }
+            else
+            {
+                textLabel.setText("An ID is unverified.");
+            }
+        });
         mainPanel.add(verifyUUIDButton);
 
         getLastUpdatedUser.setBounds(515, 70, 100, 25);
         getLastUpdatedUser.setText("Get Last Updated User");
         getLastUpdatedUser.addActionListener(a ->
         {
+            boolean userVerified = verifyUserList(userList);
 
         });
         mainPanel.add(getLastUpdatedUser);
@@ -226,5 +242,66 @@ public class Admin extends JFrame{
     public List<User> getUserList()
     {
         return userList;
+    }
+
+    private boolean verifyUserList(List<User> arrayList)
+    {
+        boolean isVerified = true;
+        if (arrayList.size() == 0)
+        {
+            isVerified = false;
+        }
+        String checker;
+        boolean isEmpty;
+        for (int i = 0; i < arrayList.size(); i++)
+        {
+            checker = arrayList.get(i).getID();
+            isEmpty = checker.trim().isEmpty();
+            if (isEmpty)
+            {
+                isVerified = false;
+            }
+            for (int j = 0; j < arrayList.size(); j++)
+            {
+                if (j != i)
+                {
+                    if (checker.equals(arrayList.get(i).getID()))
+                    {
+                        isVerified = false;
+                    }
+                }
+            }
+        }
+        return isVerified;
+    }
+    private boolean verifyGroupList(List<UserGroup> arrayList)
+    {
+        boolean isVerified = true;
+        if (arrayList.size() == 0)
+        {
+            isVerified = false;
+        }
+        String checker;
+        boolean isEmpty;
+        for (int i = 0; i < arrayList.size(); i++)
+        {
+            checker = arrayList.get(i).getGroupName();
+            isEmpty = checker.trim().isEmpty();
+            if (isEmpty)
+            {
+                isVerified = false;
+            }
+            for (int j = 0; j < arrayList.size(); j++)
+            {
+                if (j != i)
+                {
+                    if (checker.equals(arrayList.get(i).getGroupName()))
+                    {
+                        isVerified = false;
+                    }
+                }
+            }
+        }
+        return isVerified;
     }
 }
