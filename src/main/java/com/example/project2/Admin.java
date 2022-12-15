@@ -19,6 +19,7 @@ public class Admin extends JFrame{
     private JButton openUserButton;
     private JButton getUserUUIDButton;
     private JButton verifyUUIDButton;
+    private JButton getLastUpdatedUser;
     private JButton userTotalButton;
     private JButton groupTotalButton;
     private JButton userTotalMessageButton;
@@ -47,6 +48,7 @@ public class Admin extends JFrame{
         openUserButton = new JButton();
         getUserUUIDButton = new JButton();
         verifyUUIDButton = new JButton();
+        getLastUpdatedUser = new JButton();
         userTotalButton = new JButton();
         groupTotalButton = new JButton();
         userTotalMessageButton = new JButton();
@@ -127,7 +129,8 @@ public class Admin extends JFrame{
             DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             if (selectedNode != null && ((selectedNode.getUserObject() instanceof User))) {
                 User selectedUser = (User) selectedNode.getUserObject();
-                UserGUI userGUI = new UserGUI(selectedUser);
+                new UserGUI(selectedUser);
+                textLabel.setText(("Time created is " + selectedUser.getCreationTime()));
             }
             else
             {
@@ -157,6 +160,14 @@ public class Admin extends JFrame{
 
                 });
         mainPanel.add(verifyUUIDButton);
+
+        getLastUpdatedUser.setBounds(515, 70, 100, 25);
+        getLastUpdatedUser.setText("Get Last Updated User");
+        getLastUpdatedUser.addActionListener(a ->
+        {
+
+        });
+        mainPanel.add(getLastUpdatedUser);
 
         userTotalButton.setBounds(305, 200, 150, 25);
         userTotalButton.setText("Amount of Users");
